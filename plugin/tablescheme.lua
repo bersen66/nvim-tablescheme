@@ -5,8 +5,5 @@ api.nvim_create_user_command(
     function ()
         print("Hello, world!")
     end,
-    {
-        nargs = "?",
-        desc = "Everything is Ok"
-    }
+    {}
 )
