@@ -328,7 +328,7 @@ function CloseMenu()
   Timer:stop()
 end
 
-function ShowMenu(opts)
+function ShowMenu(opts, cb)
     local Borders = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
     local Width = 33
     local Height = 22 
@@ -368,10 +368,13 @@ function ShowMenu(opts)
 
 end
 
+function MyMenu() 
+  ShowMenu({}, {})
+end
 
 function tablescheme.setup(opts)
     vim.cmd('highlight ValentineHighlight guifg=#FF0000 guibg=#FF0000')
-    vim.api.nvim_create_user_command("Valentine", ShowMenu, {})
+    vim.api.nvim_create_user_command("Valentine", MyMenu, {})
 end
 
 return tablescheme
