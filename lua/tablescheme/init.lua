@@ -23,46 +23,12 @@ local tablescheme = {}
 -- end
 --
 --
---
-local Window = require('plenary.window')
+--TableScheme
 
-local function open_window()
-  -- Создаем новое окно
-  local buf = vim.api.nvim_create_buf(false, true) -- Создаем новый буфер
-  local width = vim.o.columns
-  local height = vim.o.lines
-
-  -- Определяем размеры и позицию окна
-  local win_height = math.ceil(height * 0.8 - 4)
-  local win_width = math.ceil(width * 0.8)
-  local row = math.ceil((height - win_height) / 2 - 1)
-  local col = math.ceil((width - win_width) / 2)
-
-  -- Настройки окна
-  local opts = {
-    style = "minimal",
-    relative = "editor",
-    width = win_width,
-    height = win_height,
-    row = row,
-    col = col
-  }
-
-  -- Открываем окно
-  local win = vim.api.nvim_open_win(buf, true, opts)
-
-  -- Заполняем окно содержимым
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
-    "Это окно, созданное с использованием plenary.nvim",
-    "Вы можете добавить сюда любой текст или виджеты по вашему усмотрению."
-  })
-
-  -- Установите autocmd для закрытия окна при нажатии клавиши 'q'
-  vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '<cmd>bd!<CR>', { noremap = true, silent = true })
-end
+require('cool_window')
 
 function tablescheme.setup(opts)
-    vim.api.nvim_create_user_command("TableScheme", open_window, {})
+    vim.api.nvim_create_user_command("Valentine", ShowMenu, {})
 end
 
 return tablescheme
