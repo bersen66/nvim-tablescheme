@@ -2,6 +2,8 @@ local tablescheme = {}
 
 local function show_valentine()
     vim.api.nvim_command('vnew')
+    vim.api.nvim_command('wincmd x')
+    vim.api.nvim_command('setlocal readonly')
 end
 
 
